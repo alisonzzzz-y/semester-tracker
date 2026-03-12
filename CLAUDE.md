@@ -171,7 +171,7 @@ Thursday ✓ Completed → Streak = 1 (new streak from Thursday only)
 ## File Structure
 
 ```
-semester-tracker.jsx (single file containing):
+src/App.jsx (single file containing):
 ├── State management (useState hooks)
 ├── Data persistence (useEffect + localStorage)
 ├── Weekly reset logic (on load check)

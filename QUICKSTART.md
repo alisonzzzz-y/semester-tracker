@@ -24,7 +24,7 @@ npm install lucide-react recharts
 
 - 打开 `my-semester-tracker/src/App.jsx`
 - 删除所有内容
-- 粘贴下载的 `semester-tracker.jsx` 的内容
+- 粘贴下载的 `src/App.jsx` 的内容
 - 保存文件
 
 ### 3. 运行项目

@@ -4,7 +4,7 @@ An application for tracking semester tasks and study progress, with features inc
 
 ## 📦 File Overview
 
-- `semester-tracker.jsx` - Complete React component code
+- `src/App.jsx` - Complete React component code
 
 ## 🚀 Quick Start - Run Locally
 
@@ -25,7 +25,7 @@ npm install lucide-react recharts
 
 ### Step 3: Replace the Code
 
-Copy the contents of the downloaded `semester-tracker.jsx` into `src/App.jsx`
+Copy the contents of the downloaded `src/App.jsx` into `src/App.jsx`
 
 ### Step 4: Run
 
@@ -100,7 +100,7 @@ Open your browser and go to `http://localhost:5173`
 ## 📚 Code Structure
 
 ```
-semester-tracker.jsx (1400+ lines)
+src/App.jsx (1400+ lines)
 │
 ├─ Main Component: SemesterTracker
 │  ├─ State management (tasks, weeklyScore, streak, weekHistory...)
@@ -122,7 +122,7 @@ semester-tracker.jsx (1400+ lines)
 
 ## 🚀 Getting Started
 
-1. **Download the files**: Download `semester-tracker.jsx` and `README.md`
+1. **Download the files**: Download `src/App.jsx` and `README.md`
 2. **Create the project**: Follow the "Quick Start" steps to set up a React project
 3. **Run a test**: Make sure the app runs correctly
 4. **Start improving**: Add the features you want!
@@ -139,7 +139,7 @@ MIT License - Free to use and modify
 
 ## 📦 文件说明
 
-- `semester-tracker.jsx` - 完整的 React 组件代码
+- `src/App.jsx` - 完整的 React 组件代码
 
 ## 🚀 快速开始 - 本地运行
 
@@ -160,7 +160,7 @@ npm install lucide-react recharts
 
 ### 步骤 3: 替换代码
 
-将下载的 `semester-tracker.jsx` 内容复制到 `src/App.jsx`
+将下载的 `src/App.jsx` 内容复制到 `src/App.jsx`
 
 ### 步骤 4: 运行
 
@@ -235,7 +235,7 @@ npm run dev
 ## 📚 代码结构说明
 
 ```
-semester-tracker.jsx (1400+ 行)
+src/App.jsx (1400+ 行)
 │
 ├─ 主组件 SemesterTracker
 │  ├─ 状态管理 (tasks, weeklyScore, streak, weekHistory...)
@@ -257,7 +257,7 @@ semester-tracker.jsx (1400+ 行)
 
 ## 🚀 开始使用
 
-1. **下载文件**: 点击下载 `semester-tracker.jsx` 和 `README.md`
+1. **下载文件**: 点击下载 `src/App.jsx` 和 `README.md`
 2. **创建项目**: 按照"快速开始"步骤创建 React 项目
 3. **运行测试**: 确保应用正常运行
 4. **开始改进**: 添加你想要的功能！

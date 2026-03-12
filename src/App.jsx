@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Plus, TrendingUp, Award, Flame, Target, BarChart3, PieChart, ChevronLeft, ChevronRight, Undo2, Trash2 } from 'lucide-react';
 
-const SemesterTracker = () => {
+const App = () => {
   const [tasks, setTasks] = useState([]);
   const [weeklyScore, setWeeklyScore] = useState(0);
   const [streak, setStreak] = useState(0);
@@ -603,8 +603,8 @@ const SemesterTracker = () => {
         </div>
       )}
 
-      <div className="px-8 py-4">
-        <div className="max-w-[1400px] mx-auto flex items-center justify-between">
+      <div className="px-12 py-4">
+        <div className="max-w-[1100px] mx-auto flex items-center justify-between">
           <h1 className="text-2xl font-bold tracking-tight">Semester Tracker</h1>
           <div className="flex gap-2 rounded-full p-1.5" style={{ 
             backgroundColor: '#1c1c1e',
@@ -633,8 +633,8 @@ const SemesterTracker = () => {
         </div>
       </div>
 
-      <div className="px-8 pb-8">
-        <div className="max-w-[1400px] mx-auto">
+      <div className="px-12 pb-8">
+        <div className="max-w-[1100px] mx-auto">
           <div className="view-content" key={view}>
             {renderView()}
           </div>
@@ -1093,7 +1093,7 @@ const CalendarView = ({ currentMonth, setCurrentMonth, selectedDate, setSelected
           </div>
         </div>
 
-        <div className="grid gap-3" style={{ gridTemplateColumns: 'repeat(7, minmax(0, 1fr))' }}>
+        <div className="grid gap-1.5" style={{ gridTemplateColumns: 'repeat(7, minmax(0, 1fr))' }}>
           {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(day => (
             <div key={day} className="text-center text-xs font-semibold pb-3 uppercase tracking-wider" style={{ color: '#8a8a8a' }}>
               {day}
@@ -1112,23 +1112,23 @@ const CalendarView = ({ currentMonth, setCurrentMonth, selectedDate, setSelected
               <button 
                 key={idx} 
                 onClick={() => setSelectedDate(date)}
-                className="aspect-square rounded-xl p-2 relative transition-all duration-150"
+                className="aspect-square rounded-lg p-1.5 relative transition-all duration-150"
                 style={{
                   backgroundColor: isSelected ? '#2a2a2a' : '#1c1c1e',
                   outline: isSelected ? '2px solid #8b5cf6' : isToday ? '1px solid rgba(255,255,255,0.1)' : 'none',
                   outlineOffset: '-2px'
                 }}
               >
-                <div className="absolute top-2 left-2 text-base font-semibold" style={{ color: isToday && !isSelected ? '#8b5cf6' : '#fff' }}>
+                <div className="absolute top-1.5 left-1.5 text-sm font-semibold" style={{ color: isToday && !isSelected ? '#8b5cf6' : '#fff' }}>
                   {date.getDate()}
                 </div>
                 
                 {isToday && !isSelected && (
-                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full" style={{ backgroundColor: '#8b5cf6' }} />
+                  <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full" style={{ backgroundColor: '#8b5cf6' }} />
                 )}
-                
+
                 {dayTasks.length > 0 && (
-                  <div className="absolute top-2 right-2 flex gap-1">
+                  <div className="absolute top-1.5 right-1.5 flex gap-0.5">
                     {hasCompletedTasks && (
                       <div 
                         className="w-1.5 h-1.5 rounded-full"
@@ -1440,4 +1440,4 @@ const WeeklyChart = ({ data }) => {
   );
 };
 
-export default SemesterTracker;
+export default App;
