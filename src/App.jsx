@@ -999,9 +999,9 @@ const CalendarView = ({ currentMonth, setCurrentMonth, selectedDate, setSelected
   return (
   <div className="space-y-6">
     <div className="grid gap-6" style={{ gridTemplateColumns: '2fr 1fr' }}>
-      <div className="rounded-2xl p-5" style={{ backgroundColor: '#1c1c1e' }}>
-        <div className="flex items-center mb-4 gap-4">
-          <h2 className="text-xl font-bold whitespace-nowrap truncate flex-1 min-w-0">
+      <div className="rounded-2xl p-8" style={{ backgroundColor: '#1c1c1e', minHeight: '600px', maxHeight: '600px', overflow: 'hidden' }}>
+        <div className="flex items-center mb-8 gap-4">
+          <h2 className="text-3xl font-bold whitespace-nowrap truncate flex-1 min-w-0">
             {currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
           </h2>
           <div className="flex gap-2 flex-shrink-0">
@@ -1011,7 +1011,7 @@ const CalendarView = ({ currentMonth, setCurrentMonth, selectedDate, setSelected
                 d.setMonth(d.getMonth() - 1);
                 setCurrentMonth(d);
               }} 
-              className="p-2 rounded-lg transition-all duration-150"
+              className="p-3 rounded-xl transition-all duration-150"
               style={{ backgroundColor: '#222222' }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2a2a2a'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#222222'}
@@ -1024,14 +1024,14 @@ const CalendarView = ({ currentMonth, setCurrentMonth, selectedDate, setSelected
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
             <button 
               onClick={() => {
                 setCurrentMonth(new Date());
                 setSelectedDate(new Date());
               }}
-              className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150"
+              className="px-6 py-3 rounded-xl font-medium transition-all duration-150"
               style={{ 
                 backgroundColor: isCurrentMonth ? '#3a3a3a' : '#222222',
                 color: isCurrentMonth ? '#f5f5f5' : '#d1d1d1'
@@ -1075,7 +1075,7 @@ const CalendarView = ({ currentMonth, setCurrentMonth, selectedDate, setSelected
                 d.setMonth(d.getMonth() + 1);
                 setCurrentMonth(d);
               }} 
-              className="p-2 rounded-lg transition-all duration-150"
+              className="p-3 rounded-xl transition-all duration-150"
               style={{ backgroundColor: '#222222' }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2a2a2a'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#222222'}
@@ -1088,47 +1088,47 @@ const CalendarView = ({ currentMonth, setCurrentMonth, selectedDate, setSelected
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        <div className="grid gap-1" style={{ gridTemplateColumns: 'repeat(7, minmax(0, 1fr))' }}>
+        <div className="grid gap-1.5" style={{ gridTemplateColumns: 'repeat(7, minmax(0, 1fr))' }}>
           {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(day => (
-            <div key={day} className="text-center text-xs font-semibold pb-2 uppercase tracking-wider" style={{ color: '#8a8a8a' }}>
+            <div key={day} className="text-center text-xs font-semibold pb-3 uppercase tracking-wider" style={{ color: '#8a8a8a' }}>
               {day}
             </div>
           ))}
           {getDaysInMonth().map((date, idx) => {
-            if (!date) return <div key={`e-${idx}`} className="h-12" />;
+            if (!date) return <div key={`e-${idx}`} />;
             const dayTasks = getTasksForDate(date);
             const isSelected = date.toDateString() === selectedDate.toDateString();
             const isToday = date.toDateString() === new Date().toDateString();
             const completedCount = dayTasks.filter(t => t.completed).length;
             const hasCompletedTasks = completedCount > 0;
             const hasUncompletedTasks = dayTasks.length > completedCount;
-
+            
             return (
-              <button
-                key={idx}
+              <button 
+                key={idx} 
                 onClick={() => setSelectedDate(date)}
-                className="h-12 rounded-lg relative flex items-center justify-center transition-all duration-150"
+                className="aspect-square rounded-lg p-1.5 relative transition-all duration-150"
                 style={{
                   backgroundColor: isSelected ? '#2a2a2a' : '#1c1c1e',
                   outline: isSelected ? '2px solid #8b5cf6' : isToday ? '1px solid rgba(255,255,255,0.1)' : 'none',
                   outlineOffset: '-2px'
                 }}
               >
-                <span className="text-sm font-semibold" style={{ color: isToday && !isSelected ? '#8b5cf6' : '#fff' }}>
+                <div className="absolute top-1.5 left-1.5 text-sm font-semibold" style={{ color: isToday && !isSelected ? '#8b5cf6' : '#fff' }}>
                   {date.getDate()}
-                </span>
-
+                </div>
+                
                 {isToday && !isSelected && (
-                  <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full" style={{ backgroundColor: '#8b5cf6' }} />
+                  <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full" style={{ backgroundColor: '#8b5cf6' }} />
                 )}
 
                 {dayTasks.length > 0 && (
-                  <div className="absolute top-1 right-1 flex gap-0.5">
+                  <div className="absolute top-1.5 right-1.5 flex gap-0.5">
                     {hasCompletedTasks && (
                       <div 
                         className="w-1.5 h-1.5 rounded-full"
@@ -1146,8 +1146,8 @@ const CalendarView = ({ currentMonth, setCurrentMonth, selectedDate, setSelected
         </div>
       </div>
 
-      <div className="rounded-2xl p-5 flex flex-col" style={{ backgroundColor: '#1c1c1e', width: '100%' }}>
-        <h3 className="text-base font-semibold mb-4">
+      <div className="rounded-2xl p-6 flex flex-col" style={{ backgroundColor: '#1c1c1e', minHeight: '600px', maxHeight: '600px', width: '100%' }}>
+        <h3 className="text-xl font-semibold mb-6">
           {selectedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}
         </h3>
         
@@ -1178,7 +1178,7 @@ const CalendarView = ({ currentMonth, setCurrentMonth, selectedDate, setSelected
             <p className="text-sm mb-4" style={{ color: '#8a8a8a' }}>No tasks this day</p>
           </div>
         ) : (
-          <div className="space-y-2 flex-1 overflow-y-auto">
+          <div className="space-y-2 flex-1 overflow-y-auto" style={{ maxHeight: 'calc(600px - 200px)' }}>
             {getTasksForDate(selectedDate).map(task => (
               <div 
                 key={task.id} 
